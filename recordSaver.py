@@ -98,4 +98,31 @@ zipcode_label.grid(row=1,column=6,padx=10,pady=10)
 zipcode_entry = Entry(data_frame)
 zipcode_entry.grid(row=1,column=7, padx=10, pady=10)
 
+# Button frame
+button_frame = LabelFrame(root, text="Commands")
+button_frame.pack(fill='x',expand="yes",padx=20)
+
+update_button = Button(button_frame,text="Update")
+update_button.grid(row=0,column=0,padx=10,pady=10)
+
+add_button = Button(button_frame,text="Add")
+add_button.grid(row=0,column=1,padx=10,pady=10)
+
+delete_button = Button(button_frame,text="Delete")
+delete_button.grid(row=0,column=2,padx=10,pady=10)
+
+move_up_button = Button(button_frame,text="Move Up")
+move_up_button.grid(row=0,column=3,padx=10,pady=10)
+
+move_down_button = Button(button_frame,text="Move Down")
+move_down_button.grid(row=0,column=4,padx=10,pady=10)
+
+clear_record_button = Button(button_frame,text="Clear Entry Boxes")
+clear_record_button.grid(row=0,column=5,padx=10,pady=10)
+
+search_record_button = Button(button_frame,text="Search Record")
+search_record_button.grid(row=0,column=6,padx=10,pady=10)
+
+
+
 root.mainloop()
