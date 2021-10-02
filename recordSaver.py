@@ -62,6 +62,17 @@ my_tree.tag_configure('evenrow',background="lightblue")
 data_frame = LabelFrame(root, text="Record")
 data_frame.pack(fill="x",expand="yes",padx=20)
 
+# functions
+def up():
+    rows = my_tree.selection()
+    for row in rows:
+        my_tree.move(row, my_tree.parent(row),my_tree.index(row)-1)
+
+def down():
+    rows = my_tree.selection()
+    for row in reversed(rows):
+        my_tree.move(row,my_tree.parent(row),my_tree.index(row)+1)
+
 # inside data frame
 fn_label = Label(data_frame, text="First Name")
 fn_label.grid(row=0,column=0,padx=10,pady=10)
@@ -111,10 +122,10 @@ add_button.grid(row=0,column=1,padx=10,pady=10)
 delete_button = Button(button_frame,text="Delete")
 delete_button.grid(row=0,column=2,padx=10,pady=10)
 
-move_up_button = Button(button_frame,text="Move Up")
+move_up_button = Button(button_frame,text="Move Up",command=up)
 move_up_button.grid(row=0,column=3,padx=10,pady=10)
 
-move_down_button = Button(button_frame,text="Move Down")
+move_down_button = Button(button_frame,text="Move Down",command=down)
 move_down_button.grid(row=0,column=4,padx=10,pady=10)
 
 clear_record_button = Button(button_frame,text="Clear Entry Boxes")
