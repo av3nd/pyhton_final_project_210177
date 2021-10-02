@@ -73,6 +73,15 @@ def down():
     for row in reversed(rows):
         my_tree.move(row,my_tree.parent(row),my_tree.index(row)+1)
 
+def clear_entries():
+    fn_entry.delete(0, END)
+    ln_entry.delete(0, END)
+    id_entry.delete(0, END)
+    address_entry.delete(0, END)
+    city_entry.delete(0, END)
+    state_entry.delete(0, END)
+    zipcode_entry.delete(0, END)
+
 # inside data frame
 fn_label = Label(data_frame, text="First Name")
 fn_label.grid(row=0,column=0,padx=10,pady=10)
@@ -128,7 +137,7 @@ move_up_button.grid(row=0,column=3,padx=10,pady=10)
 move_down_button = Button(button_frame,text="Move Down",command=down)
 move_down_button.grid(row=0,column=4,padx=10,pady=10)
 
-clear_record_button = Button(button_frame,text="Clear Entry Boxes")
+clear_record_button = Button(button_frame,text="Clear Entry Boxes",command=clear_entries)
 clear_record_button.grid(row=0,column=5,padx=10,pady=10)
 
 search_record_button = Button(button_frame,text="Search Record")
