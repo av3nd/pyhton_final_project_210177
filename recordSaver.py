@@ -78,6 +78,26 @@ conn.commit()
 conn.close()
 
 # functions
+def query_database():
+    conn = sqlite3.connect('tree_crm.db')
+    c = conn.cursor()
+    c.execute("SELECT rowid, * FROM customers")
+    records = c.fetchall()
+
+    global count
+    count = 0
+
+    for record in records:
+        if count % 2 == 0:
+            my_tree.insert(parent='',index='end',iid=count,text='',values=(record[1],record[2],record[0],record[4],record[5],record[6],record[7]),tags=('evenrow',))
+        else:
+            my_tree.insert(parent='', index='end', iid=count, text='',values=(record[1], record[2], record[0], record[4], record[5], record[6],record[7]),tags=('oddrow',))
+        count+=1
+
+    conn.commit()
+    conn.close()
+
+
 def add_record():
 
     conn = sqlite3.connect('tree_crm.db')
@@ -107,7 +127,7 @@ def add_record():
     zipcode_entry.delete(0, END)
 
     my_tree.delete(*my_tree.get_children())
-    
+    query_database()
     messagebox.showinfo("Added!", "Selected record is added sucessfully")
 
 def up():
@@ -218,5 +238,6 @@ search_record_button.grid(row=0,column=6,padx=10,pady=10)
 
 #binding the treeview
 my_tree.bind("<ButtonRelease-1>",select_record)
+query_database()
 
 root.mainloop()
