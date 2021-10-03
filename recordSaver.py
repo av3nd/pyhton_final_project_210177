@@ -4,10 +4,10 @@ from tkinter import messagebox
 import sqlite3
 
 root = Tk()
-root.title('Management System')
+root.title('Customer Record Saver')
 root.geometry("1000x500")
 root.config(bg="lightgrey")
-
+root.iconbitmap('record_saver.ico')
 
 # style for treeview
 style = ttk.Style()
