@@ -1,5 +1,7 @@
 from tkinter import *
 from tkinter import ttk
+from tkinter import messagebox
+import sqlite3
 
 root = Tk()
 root.title('Management System')
@@ -61,6 +63,22 @@ my_tree.tag_configure('evenrow',background="lightblue")
 # data frame
 data_frame = LabelFrame(root, text="Record")
 data_frame.pack(fill="x",expand="yes",padx=20)
+
+# connecting to database
+conn = sqlite3.connect('tree_crm.db')
+c = conn.cursor()
+c.execute("""CREATE TABLE if not exists customers (
+    first_name text,
+    last_name text,
+    id integer,
+    address text,
+    city text,
+    state text,
+    zipcode text
+)
+""")
+conn.commit()
+conn.close()
 
 # functions
 def up():
