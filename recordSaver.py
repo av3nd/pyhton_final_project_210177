@@ -78,6 +78,38 @@ conn.commit()
 conn.close()
 
 # functions
+def add_record():
+
+    conn = sqlite3.connect('tree_crm.db')
+    c = conn.cursor()
+
+    c.execute("INSERT INTO customers VALUES (:first,:last,:id,:address,:city,:state,:zipcode)",
+        {
+            'first': fn_entry.get(),
+            'last': ln_entry.get(),
+            'id':id_entry.get(),
+            'address': address_entry.get(),
+            'city' : city_entry.get(),
+            'state': state_entry.get(),
+            'zipcode': zipcode_entry.get(),
+
+        })
+
+    conn.commit()
+    conn.close()
+
+    fn_entry.delete(0, END)
+    ln_entry.delete(0, END)
+    id_entry.delete(0, END)
+    address_entry.delete(0, END)
+    city_entry.delete(0, END)
+    state_entry.delete(0, END)
+    zipcode_entry.delete(0, END)
+
+    my_tree.delete(*my_tree.get_children())
+    
+    messagebox.showinfo("Added!", "Selected record is added sucessfully")
+
 def up():
     rows = my_tree.selection()
     for row in rows:
@@ -166,7 +198,7 @@ button_frame.pack(fill='x',expand="yes",padx=20)
 update_button = Button(button_frame,text="Update",font=('Consolas',11))
 update_button.grid(row=0,column=0,padx=10,pady=10)
 
-add_button = Button(button_frame,text="Add",font=('Consolas',11))
+add_button = Button(button_frame,text="Add",font=('Consolas',11),command=add_record)
 add_button.grid(row=0,column=1,padx=10,pady=10)
 
 delete_button = Button(button_frame,text="Delete",font=('Consolas',11))
