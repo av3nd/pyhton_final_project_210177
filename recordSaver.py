@@ -78,6 +78,33 @@ conn.commit()
 conn.close()
 
 # functions
+def searching():
+    global search_entry, search
+    search = Toplevel(root)
+    search.title("Seacrh Coustomer Information")
+    search.geometry("305x210")
+    search_frame = LabelFrame(search, text="Enter last name to search",font=('Consolas',11))
+    search_frame.place(x=0, y=0, width=300, height=205)
+    search_frame.config(bg="lightgrey")
+    search_entry = Entry(search_frame)
+    search_entry.pack(padx=20,pady=20)
+    search_button = Button(search_frame,text="Search",font=('Consolas',11))
+    search_button.pack(padx=20,pady=20)
+
+def remove():
+    x = my_tree.selection()[0]
+    my_tree.delete(x)
+
+    conn = sqlite3.connect('tree_crm.db')
+    c = conn.cursor()
+
+    c.execute("DELETE from customers WHERE oid=" + id_entry.get())
+
+    conn.commit()
+    conn.close()
+    clear_entries()
+    messagebox.showinfo("DELETED!","Selected record is deleted sucessfully")
+
 def update_record():
     selected = my_tree.focus()
     my_tree.item(selected,text="", values=(fn_entry.get(),ln_entry.get(),id_entry.get(),city_entry.get(),state_entry.get(),zipcode_entry.get(),))
@@ -256,7 +283,7 @@ update_button.grid(row=0,column=0,padx=10,pady=10)
 add_button = Button(button_frame,text="Add",font=('Consolas',11),command=add_record)
 add_button.grid(row=0,column=1,padx=10,pady=10)
 
-delete_button = Button(button_frame,text="Delete",font=('Consolas',11))
+delete_button = Button(button_frame,text="Delete",font=('Consolas',11),command=remove)
 delete_button.grid(row=0,column=2,padx=10,pady=10)
 
 move_up_button = Button(button_frame,text="Move Up",command=up,font=('Consolas',11))
@@ -268,7 +295,7 @@ move_down_button.grid(row=0,column=4,padx=10,pady=10)
 clear_record_button = Button(button_frame,text="Clear Entry Boxes",command=clear_entries,font=('Consolas',11))
 clear_record_button.grid(row=0,column=5,padx=10,pady=10)
 
-search_record_button = Button(button_frame,text="Search Record",font=('Consolas',11))
+search_record_button = Button(button_frame,text="Search Record",font=('Consolas',11),command=searching)
 search_record_button.grid(row=0,column=6,padx=10,pady=10)
 
 #binding the treeview
