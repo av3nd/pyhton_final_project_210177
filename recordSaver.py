@@ -100,6 +100,28 @@ def clear_entries():
     state_entry.delete(0, END)
     zipcode_entry.delete(0, END)
 
+def select_record(e):
+    fn_entry.delete(0,END)
+    ln_entry.delete(0,END)
+    id_entry.delete(0,END)
+    address_entry.delete(0,END)
+    city_entry.delete(0,END)
+    state_entry.delete(0,END)
+    zipcode_entry.delete(0,END)
+
+    # select row in treeview
+    selected = my_tree.focus()
+    values = my_tree.item(selected,'values')
+
+    # put the select row in entry boxes
+    fn_entry.insert(0,values[0])
+    ln_entry.insert(0,values[1])
+    id_entry.insert(0,values[2])
+    address_entry.insert(0,values[3])
+    city_entry.insert(0,values[4])
+    state_entry.insert(0,values[5])
+    zipcode_entry.insert(0,values[6])
+
 # inside data frame
 fn_label = Label(data_frame, text="First Name")
 fn_label.grid(row=0,column=0,padx=10,pady=10)
@@ -161,6 +183,7 @@ clear_record_button.grid(row=0,column=5,padx=10,pady=10)
 search_record_button = Button(button_frame,text="Search Record")
 search_record_button.grid(row=0,column=6,padx=10,pady=10)
 
-
+#binding the treeview
+my_tree.bind("<ButtonRelease-1>",select_record)
 
 root.mainloop()
