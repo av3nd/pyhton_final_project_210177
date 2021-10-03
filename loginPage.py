@@ -17,7 +17,7 @@ def ok():
     elif(uname=="admin"and password=="admin"):
         messagebox.showinfo("Login Success","Username and Password correct!!")
         admin.withdraw()
-        os.system("treeview_app.py")
+        os.system("recordSaver.py")
 
 
     else:
