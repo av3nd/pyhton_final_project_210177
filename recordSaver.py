@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
 import sqlite3
+import os
 
 root = Tk()
 root.title('Customer Record Saver')
@@ -257,6 +258,10 @@ def select_record(e):
     state_entry.insert(0,values[5])
     zipcode_entry.insert(0,values[6])
 
+def refresh():
+    root.destroy()
+    os.system('recordSaver.py')
+
 # data frame
 data_frame = LabelFrame(root, text="Record",font=('Consolas',11))
 data_frame.pack(fill="x",expand="yes",padx=20)
@@ -321,6 +326,9 @@ clear_record_button.grid(row=0,column=5,padx=10,pady=10)
 
 search_record_button = Button(button_frame,text="Search Record",font=('Consolas',11),command=searching,cursor='hand2',bg='lightgrey')
 search_record_button.grid(row=0,column=6,padx=10,pady=10)
+
+refresh_button = Button(button_frame,text="Refresh Treview",font=('Consolas',11),command=refresh,cursor='hand2',bg='lightgrey')
+refresh_button.grid(row=0,column=7,padx=10,pady=10)
 
 #binding the treeview
 my_tree.bind("<ButtonRelease-1>",select_record)
