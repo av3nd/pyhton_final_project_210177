@@ -7,6 +7,7 @@ admin.title("Login Page")
 admin.geometry("305x210")
 admin.iconbitmap('key.ico')
 admin.config(bg="lightgrey")
+admin.resizable(0, 0)
 
 #Function
 def ok():

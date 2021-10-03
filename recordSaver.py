@@ -9,6 +9,7 @@ root.title('Customer Record Saver')
 root.geometry("1000x500")
 root.config(bg="lightgrey")
 root.iconbitmap('record_saver.ico')
+root.resizable(0, 0)
 
 # style for treeview
 style = ttk.Style()
@@ -108,11 +109,15 @@ def searching():
     search = Toplevel(root)
     search.title("Seacrh Coustomer Information")
     search.geometry("305x210")
+    search.resizable(0, 0)
+
     search_frame = LabelFrame(search, text="Enter last name to search",font=('Consolas',11))
     search_frame.place(x=0, y=0, width=300, height=205)
     search_frame.config(bg="lightgrey")
+
     search_entry = Entry(search_frame)
     search_entry.pack(padx=20,pady=20)
+
     search_button = Button(search_frame,text="Search",font=('Consolas',11),cursor='hand2',command=search_records)
     search_button.pack(padx=20,pady=20)
 
