@@ -12,7 +12,7 @@ root.iconbitmap('record_saver.ico')
 # style for treeview
 style = ttk.Style()
 style.theme_use('default')
-
+style.configure("Treeview.Heading", font=('Consolas',10))
 style.configure("Treeview",
     background='#D3D3D3',
     foreground="black",
