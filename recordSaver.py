@@ -88,7 +88,7 @@ def searching():
     search_frame.config(bg="lightgrey")
     search_entry = Entry(search_frame)
     search_entry.pack(padx=20,pady=20)
-    search_button = Button(search_frame,text="Search",font=('Consolas',11))
+    search_button = Button(search_frame,text="Search",font=('Consolas',11),cursor='hand2')
     search_button.pack(padx=20,pady=20)
 
 def remove():
@@ -277,25 +277,25 @@ zipcode_entry.grid(row=1,column=7, padx=10, pady=10)
 button_frame = LabelFrame(root, text="Commands",font=('Consolas',11))
 button_frame.pack(fill='x',expand="yes",padx=20)
 
-update_button = Button(button_frame,text="Update",font=('Consolas',11),command=update_record)
+update_button = Button(button_frame,text="Update",font=('Consolas',11),command=update_record,cursor='hand2')
 update_button.grid(row=0,column=0,padx=10,pady=10)
 
-add_button = Button(button_frame,text="Add",font=('Consolas',11),command=add_record)
+add_button = Button(button_frame,text="Add",font=('Consolas',11),command=add_record,cursor='hand2')
 add_button.grid(row=0,column=1,padx=10,pady=10)
 
-delete_button = Button(button_frame,text="Delete",font=('Consolas',11),command=remove)
+delete_button = Button(button_frame,text="Delete",font=('Consolas',11),command=remove,cursor='hand2')
 delete_button.grid(row=0,column=2,padx=10,pady=10)
 
-move_up_button = Button(button_frame,text="Move Up",command=up,font=('Consolas',11))
+move_up_button = Button(button_frame,text="Move Up",command=up,font=('Consolas',11),cursor='hand2')
 move_up_button.grid(row=0,column=3,padx=10,pady=10)
 
-move_down_button = Button(button_frame,text="Move Down",command=down,font=('Consolas',11))
+move_down_button = Button(button_frame,text="Move Down",command=down,font=('Consolas',11),cursor='hand2')
 move_down_button.grid(row=0,column=4,padx=10,pady=10)
 
-clear_record_button = Button(button_frame,text="Clear Entry Boxes",command=clear_entries,font=('Consolas',11))
+clear_record_button = Button(button_frame,text="Clear Entry Boxes",command=clear_entries,font=('Consolas',11),cursor='hand2')
 clear_record_button.grid(row=0,column=5,padx=10,pady=10)
 
-search_record_button = Button(button_frame,text="Search Record",font=('Consolas',11),command=searching)
+search_record_button = Button(button_frame,text="Search Record",font=('Consolas',11),command=searching,cursor='hand2')
 search_record_button.grid(row=0,column=6,padx=10,pady=10)
 
 #binding the treeview
