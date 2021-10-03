@@ -6,6 +6,7 @@ import sqlite3
 root = Tk()
 root.title('Management System')
 root.geometry("1000x500")
+root.config(bg="lightgrey")
 
 
 # style for treeview
@@ -59,10 +60,6 @@ my_tree.heading("Zipcode", text="Zipcode",anchor=CENTER)
 # Create Striped Row Tags
 my_tree.tag_configure('oddrow',background="white")
 my_tree.tag_configure('evenrow',background="lightblue")
-
-# data frame
-data_frame = LabelFrame(root, text="Record")
-data_frame.pack(fill="x",expand="yes",padx=20)
 
 # connecting to database
 conn = sqlite3.connect('tree_crm.db')
@@ -122,65 +119,69 @@ def select_record(e):
     state_entry.insert(0,values[5])
     zipcode_entry.insert(0,values[6])
 
+# data frame
+data_frame = LabelFrame(root, text="Record",font=('Consolas',11))
+data_frame.pack(fill="x",expand="yes",padx=20)
+
 # inside data frame
-fn_label = Label(data_frame, text="First Name")
+fn_label = Label(data_frame, text="First Name",font=('Consolas',11))
 fn_label.grid(row=0,column=0,padx=10,pady=10)
 fn_entry = Entry(data_frame)
 fn_entry.grid(row=0,column=1, padx=10, pady=10)
 
-ln_label = Label(data_frame, text="Last Name")
+ln_label = Label(data_frame, text="Last Name",font=('Consolas',11))
 ln_label.grid(row=0,column=2,padx=10,pady=10)
 ln_entry = Entry(data_frame)
 ln_entry.grid(row=0,column=3, padx=10, pady=10)
 
-id_label = Label(data_frame, text="ID")
+id_label = Label(data_frame, text="ID",font=('Consolas',11))
 id_label.grid(row=0,column=4,padx=10,pady=10)
 id_entry = Entry(data_frame)
 id_entry.grid(row=0,column=5, padx=10, pady=10)
 
-address_label = Label(data_frame, text="Address")
+address_label = Label(data_frame, text="Address",font=('Consolas',11))
 address_label.grid(row=1,column=0,padx=10,pady=10)
 address_entry = Entry(data_frame)
 address_entry.grid(row=1,column=1, padx=10, pady=10)
 
-city_label = Label(data_frame, text="City")
+city_label = Label(data_frame, text="City",font=('Consolas',11))
 city_label.grid(row=1,column=2,padx=10,pady=10)
 city_entry = Entry(data_frame)
 city_entry.grid(row=1,column=3, padx=10, pady=10)
 
-state_label = Label(data_frame, text="State")
+state_label = Label(data_frame, text="State",font=('Consolas',11))
 state_label.grid(row=1,column=4,padx=10,pady=10)
 state_entry = Entry(data_frame)
 state_entry.grid(row=1,column=5, padx=10, pady=10)
 
-zipcode_label = Label(data_frame, text="Zipcode")
+zipcode_label = Label(data_frame, text="Zipcode",font=('Consolas',11))
 zipcode_label.grid(row=1,column=6,padx=10,pady=10)
 zipcode_entry = Entry(data_frame)
 zipcode_entry.grid(row=1,column=7, padx=10, pady=10)
 
 # Button frame
-button_frame = LabelFrame(root, text="Commands")
+button_frame = LabelFrame(root, text="Commands",font=('Consolas',11))
 button_frame.pack(fill='x',expand="yes",padx=20)
 
-update_button = Button(button_frame,text="Update")
+update_button = Button(button_frame,text="Update",font=('Consolas',11))
 update_button.grid(row=0,column=0,padx=10,pady=10)
 
-add_button = Button(button_frame,text="Add")
+add_button = Button(button_frame,text="Add",font=('Consolas',11))
 add_button.grid(row=0,column=1,padx=10,pady=10)
 
-delete_button = Button(button_frame,text="Delete")
+delete_button = Button(button_frame,text="Delete",font=('Consolas',11))
 delete_button.grid(row=0,column=2,padx=10,pady=10)
 
-move_up_button = Button(button_frame,text="Move Up",command=up)
+move_up_button = Button(button_frame,text="Move Up",command=up,font=('Consolas',11))
 move_up_button.grid(row=0,column=3,padx=10,pady=10)
 
-move_down_button = Button(button_frame,text="Move Down",command=down)
+move_down_button = Button(button_frame,text="Move Down",command=down,font=('Consolas',11))
 move_down_button.grid(row=0,column=4,padx=10,pady=10)
 
-clear_record_button = Button(button_frame,text="Clear Entry Boxes",command=clear_entries)
+clear_record_button = Button(button_frame,text="Clear Entry Boxes",command=clear_entries,font=('Consolas',11))
 clear_record_button.grid(row=0,column=5,padx=10,pady=10)
 
-search_record_button = Button(button_frame,text="Search Record")
+search_record_button = Button(button_frame,text="Search Record",font=('Consolas',11))
 search_record_button.grid(row=0,column=6,padx=10,pady=10)
 
 #binding the treeview
