@@ -78,6 +78,41 @@ conn.commit()
 conn.close()
 
 # functions
+def update_record():
+    selected = my_tree.focus()
+    my_tree.item(selected,text="", values=(fn_entry.get(),ln_entry.get(),id_entry.get(),city_entry.get(),state_entry.get(),zipcode_entry.get(),))
+
+    conn = sqlite3.connect('tree_crm.db')
+    c = conn.cursor()
+    c.execute("""UPDATE customers SET 
+     first_name = :first,
+     last_name = :last,
+     address = :address,
+     city = :city,
+     state = :state,
+     zipcode= :zipcode
+     WHERE oid = :oid""",
+     {
+      'first': fn_entry.get(),
+      'last': ln_entry.get(),
+      'address': address_entry.get(),
+      'city': city_entry.get(),
+      'state': state_entry.get(),
+      'zipcode': zipcode_entry.get(),
+      'oid': id_entry.get()
+     })
+    conn.commit()
+    conn.close()
+
+    fn_entry.delete(0, END)
+    ln_entry.delete(0, END)
+    id_entry.delete(0, END)
+    address_entry.delete(0, END)
+    city_entry.delete(0, END)
+    state_entry.delete(0, END)
+    zipcode_entry.delete(0, END)
+    messagebox.showinfo("UPDATED!", "Selected record is updated sucessfully")
+
 def query_database():
     conn = sqlite3.connect('tree_crm.db')
     c = conn.cursor()
@@ -215,7 +250,7 @@ zipcode_entry.grid(row=1,column=7, padx=10, pady=10)
 button_frame = LabelFrame(root, text="Commands",font=('Consolas',11))
 button_frame.pack(fill='x',expand="yes",padx=20)
 
-update_button = Button(button_frame,text="Update",font=('Consolas',11))
+update_button = Button(button_frame,text="Update",font=('Consolas',11),command=update_record)
 update_button.grid(row=0,column=0,padx=10,pady=10)
 
 add_button = Button(button_frame,text="Add",font=('Consolas',11),command=add_record)
